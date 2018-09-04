@@ -1,0 +1,19 @@
+/* new added */
+
+.imdbicon {
+    width: 7rem;
+    height: 5rem;
+  }
+  
+  .inline {
+    display: inline-block;
+  }
+
+  h1.title {
+    color: red;
+  }
+.margin {
+  margin-top: 10px;
+}
+  
+  /* end added*/

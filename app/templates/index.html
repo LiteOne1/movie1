@@ -4,9 +4,23 @@
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
     <div class="container">
-      <h1>{{name}}</h1>
+      <h1 class="title">{{name}}</h1>
+      <div class="row">
+          <div class="col-sm inline">
+            <img class="imdbicon" src="../static/img/imdb.png" alt="imdb icon">
+          </div>
+          <div class="col-sm inline">
+            <p class = "text-center text-red">{{score}}</p>
+          </div>
+          <div class="col-sm inline">
+            <img class="imdbicon" src="../static/img/rottentomatoes.png" alt="imdb icon">
+          </div>
+          <div class="col-sm inline">
+            <p class = "text-center text-red">{{rotten_score}}</p>
+          </div>
+      </div>
       <h2>Synopsis</h2>
-      <p>{{ synopsis }}</p>
+      <blockquote class="blockquote text-left">{{ synopsis }}</blockquote>
     </div>
   </div>
 
@@ -14,14 +28,18 @@
     <!-- Example row of columns -->
     <div class="row">
       <div class="col-md-4">
-        <h2>Heading</h2>
-        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+        <h2>Staring:</h2><!-- itereate actors list and prin one actor at time-->
+        {% for actor in actors %}
+        <p>{{ actor }}</p>
+        {% endfor %}
         <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
       </div>
       <div class="col-md-4">
-        <h2>Heading</h2>
-        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-        <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        <h2>Trailer: </h2>
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe src="https://www.imdb.com/videoembed/vi1315682329" allowfullscreen></iframe>
+        </div>
+        <p><a class="btn btn-default margin" href="#" role="button">View details &raquo;</a></p>
      </div>
       <div class="col-md-4">
         <h2>Heading</h2>
