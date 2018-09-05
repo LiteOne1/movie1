@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 from re import compile
+from html import escape
 
 url = 'https://www.rottentomatoes.com/m/deadpool_2'
 url_imdb = 'https://www.imdb.com/title/tt5463162'
@@ -36,13 +37,11 @@ def imdb_rating(url_adress):
 
 def rotten_rating(url_adress):
     rating_div = soup.find('div', class_='meter-value')
-    get_rating = rating_div.find('span', class_ = 'superPageFontColor')
-    return get_rating.text
+    get_rating = rating_div.find('span', class_ = 'superPageFontColor').get_text()
+    return get_rating
 
 def get_posters(url_adress):
-    posters = soup.find('img', class_ = 'PhotosCarousel__image') #get only first poster. To be change after redesign
-    print(posters)
-    #for poster in posters:
-        #return poster['src']
+    posters = soup.find('img', class_ = 'posterImage') #get only first poster. To be change after redesign
+    return posters['src']
 
 #print(get_posters(html_get))
