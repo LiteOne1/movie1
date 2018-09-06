@@ -2,8 +2,9 @@ from bs4 import BeautifulSoup
 import requests
 from re import compile
 from html import escape
+from app.searchmovie import movie_search
 
-url = 'https://www.rottentomatoes.com/m/deadpool_2'
+url = 'https://www.rottentomatoes.com'+movie_search
 url_imdb = 'https://www.imdb.com/title/tt5463162'
 
 html_get = requests.get(url)
@@ -21,7 +22,14 @@ def get_synopsis(html_soup):
 #get movie name from rotten
 def get_name(name):
     movie_name = soup.find('h1', class_= 'title hidden-xs')
-    return movie_name.text
+    if movie_name is not None:
+        movie_name = soup.find('h1', class_= 'title hidden-xs')
+        return movie_name.text
+        
+    else:
+        movie_name1 = soup.find('h1', class_= 'title clearfix')
+        return movie_name1.text
+
 #get cast from imdb
 def get_actors(actors):
     actors_name = soup1.find('h4' , class_='inline', text = 'Stars:')#finding category tag were actors are listed
@@ -44,4 +52,4 @@ def get_posters(url_adress):
     posters = soup.find('img', class_ = 'posterImage') #get only first poster. To be change after redesign
     return posters['src']
 
-#print(get_posters(html_get))
+print(get_name(html_get))
