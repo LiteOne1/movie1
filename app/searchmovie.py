@@ -8,14 +8,14 @@ from selenium.webdriver.chrome.options import Options
 
 
 
-search_input = "cold"
+search_input = "captain america"
 def escape_input(search_input):
     remove_sq = search_input.replace("'", "")#replace ' with nothing
     return quote(remove_sq)
 
 options = Options()#options for selenium not to open a new webpage. It is a very slow solution.
 options.add_argument("--headless")
-driver = webdriver.Chrome('D:/Python/Flask/movie/app/static/chrome/chromedriver.exe')
+driver = webdriver.Chrome('./app/static/chrome/chromedriver.exe')
 url_rotten = "https://www.rottentomatoes.com/search/?search="+ escape_input(search_input)
 driver.get(url_rotten)
 url_imdb = 'https://www.imdb.com/title/tt5463162'
@@ -37,4 +37,4 @@ def movie_url(url_rotten):
 
 movie_search = movie_url(html_get)
 
-print(movie_search)
+
